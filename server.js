@@ -69,6 +69,7 @@ app.post('/register', async (req, res) => {
     try {
         conn = await pool.getConnection();
         await conn.query('INSERT INTO Users(username) VALUES (?)', [username]);
+        res.send('hello world');
     } catch (err) {
         res.status(500).send(`Error adding user: ${err}`);
     } finally {
@@ -89,7 +90,7 @@ app.post('/replicate-register', async (req, res) => {
         conn = await pool.getConnection();
         await conn.query('INSERT INTO Users(username) VALUES (?)', [username]);
         await conn.query(query);
-        res.redirect('/');
+        res.send('hello world');
     } catch (err) {
         res.status(500).send(`Error adding user: ${err}`);
     } finally {
