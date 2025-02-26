@@ -20,8 +20,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Use body-parser middleware to parse form data (if you prefer explicit usage)
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // Alternatively, you can use Express's built-in parsing:
 // app.use(express.urlencoded({ extended: true }));
 
@@ -76,9 +76,9 @@ app.post('/register', async (req, res) => {
         if (conn) conn.release();
     }
 
-    axios.post('http://35.188.82.186/replicate-register', "username=" + username)
-        .then(response => { console.log("Replicated.") })
-        .catch(error => console.error(error));
+    // axios.post('http://35.188.82.186/replicate-register', "username=" + username)
+    //     .then(response => { console.log("Replicated.") })
+    //     .catch(error => console.error(error));
 });
 
 app.post('/replicate-register', async (req, res) => {
