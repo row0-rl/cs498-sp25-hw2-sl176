@@ -69,16 +69,15 @@ app.post('/register', async (req, res) => {
     try {
         conn = await pool.getConnection();
         await conn.query('INSERT INTO Users(username) VALUES (?)', [username]);
-        res.redirect('/');
     } catch (err) {
         res.status(500).send(`Error adding user: ${err}`);
     } finally {
         if (conn) conn.release();
     }
 
-    // axios.post('http://35.188.82.186/replicate-register', "username=" + username)
-    //     .then(response => { console.log("Replicated.") })
-    //     .catch(error => console.error(error));
+    axios.post('http://35.188.82.186/replicate-register', data)
+        .then(response => { console.log("Replicated.") })
+        .catch(error => console.error(error));
 });
 
 app.post('/replicate-register', async (req, res) => {
