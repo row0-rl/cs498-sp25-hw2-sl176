@@ -58,7 +58,7 @@ app.post('/add', async (req, res) => {
 });
 
 app.get('/greeting', async (req, res) => {
-    res.send('<h1>Hello, World!</h1>');
+    res.send('Hello, World!');
 });
 
 app.post('/register', async (req, res) => {
